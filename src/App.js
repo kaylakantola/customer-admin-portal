@@ -6,6 +6,7 @@ function App() {
   return (
     <div>
         <TopAppBar name={"Outdoor.sy"}/>
+        <div style={{height: 20}} />
         <CustomerAdminPortal />
     </div>
   );

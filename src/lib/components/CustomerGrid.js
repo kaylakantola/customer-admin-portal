@@ -1,29 +1,51 @@
-import {DataGrid} from '@mui/x-data-grid';
+import React from 'react'
+import { GridOverlay, DataGrid } from '@mui/x-data-grid';
+import LinearProgress from '@mui/material/LinearProgress';
 
 // const rows = [
-//     {id: 1, col1: 'Greta Thunberg', col2: 'gretat@future.com', col3: 'sailboat', col4: 'Fridays For Future', col5: 32},
-//     {id: 2, col1: 'Greta Zhunberg', col2: 'gretaz@future.com', col3: 'yacht', col4: 'Fridays For Future', col5: 52},
-//     {id: 3, col1: 'Greta Ahunberg', col2: 'gretaa@future.com', col3: 'catamaran', col4: 'Fridays For Future', col5: 10},
-//     {id: 4, col1: 'Greta Bhunberg', col2: 'gretab@future.com', col3: 'sunfish', col4: 'Fridays For Future', col5: 5},
+//     {id: 1, fullName: 'Greta Thunberg', email: 'gretat@future.com', vehicleType: 'sailboat', vehicleName: 'Fridays For Future', vehicleLength: 32},
+//     {id: 2, fullName: 'Greta Zhunberg', email: 'gretaz@future.com', vehicleType: 'yacht', vehicleName: 'Fridays For Future', vehicleLength: 52},
+//     {id: 3, fullName: 'Greta Ahunberg', email: 'gretaa@future.com', vehicleType: 'catamaran', vehicleName: 'Fridays For Future', vehicleLength: 10},
+//     {id: 4, fullName: 'Greta Bhunberg', email: 'gretab@future.com', vehicleType: 'sunfish', vehicleName: 'Fridays For Future', vehicleLength: 5},
 //
 // ];
 
 const columns = [
-    {field: 'col1', headerName: 'Full Name', width: 150},
-    {field: 'col2', headerName: 'Email', width: 150},
-    {field: 'col3', headerName: 'Vehicle Type', width: 150},
-    {field: 'col4', headerName: 'Vehicle Name', width: 150},
-    {field: 'col5', headerName: 'Vehicle Length', width: 150},
+    {field: 'fullName', headerName: 'Full Name', flex: 1},
+    {field: 'email', headerName: 'Email', flex: 1},
+    {field: 'vehicleType', headerName: 'Vehicle Type', flex: 1},
+    {field: 'vehicleName', headerName: 'Vehicle Name', flex: 1},
+    {field: 'vehicleLength', headerName: 'Vehicle Length (feet)', flex: .5},
 ];
 
-export default function CustomerGrid({customers}) {
+
+function CustomLoadingOverlay() {
     return (
-        <div style={{height: '75vh'}}>
+        <GridOverlay>
+            <div style={{ position: 'absolute', top: 0, width: '100%' }}>
+                <LinearProgress />
+            </div>
+        </GridOverlay>
+    );
+}
+
+
+
+export default function CustomerGrid({customers, customersLoading}) {
+    return (
             <div style={{display: 'flex', height: '100%'}}>
                 <div style={{flexGrow: 1}}>
-                    <DataGrid rows={customers} columns={columns}/>
+                    <DataGrid
+                        rows={customers}
+                        columns={columns}
+                        autoHeight
+                        components={{
+                            LoadingOverlay: CustomLoadingOverlay
+                        }}
+                        loading={customersLoading}
+                    />
                 </div>
             </div>
-        </div>
+
     )
 }

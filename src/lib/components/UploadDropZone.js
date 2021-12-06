@@ -2,7 +2,6 @@ import React, {useCallback, useMemo, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import parseCustomerData from '../utils/parse-customer-data'
 
 const baseStyle = {
     textAlign: 'center',
@@ -32,7 +31,7 @@ const rejectStyle = {
     color: '#ff1744'
 };
 
-export default function UploadDropzone({setCustomers}) {
+export default function UploadDropzone({setCustomers, setCustomersLoading, parseCustomerData}) {
 
     const [message, setMessage] = useState("Click here, or, drag and drop your happy camper list to start upload (.txt format only) ")
 
@@ -41,28 +40,35 @@ export default function UploadDropzone({setCustomers}) {
         acceptedFiles.forEach((file) => {
             const reader = new FileReader()
 
+            reader.onloadstart = () => {
+                setMessage("Upload Started")
+                setCustomersLoading(true)
+                setCustomers([])
+            }
+
             reader.onabort = () => {
-                console.log('file reading was aborted')
-                setMessage("File reading was aborted")
+                setMessage("Upload Aborted")
             }
 
             reader.onerror = () => {
-                console.log('file reading has failed')
-                setMessage("File reading has failed")
+                setMessage("Upload Failed")
             }
 
             reader.onload = () => {
-                // Do whatever you want with the file contents
                 const data = reader.result
                 const parsedData = parseCustomerData({data})
+                setMessage("Upload Success!")
                 setCustomers(parsedData)
-                setMessage("Upload successful!")
             }
 
-            reader.readAsArrayBuffer(file)
+            reader.onloadend = () => {
+                setCustomersLoading(false)
+            }
+
+            reader.readAsText(file)
         })
 
-    }, [])
+    }, [setCustomers, setCustomersLoading, parseCustomerData])
 
 
     const {
