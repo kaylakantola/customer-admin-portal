@@ -11,6 +11,7 @@ const CustomerAdminPortal = () => {
         <div style={{width: '100%'}}>
             <Stack spacing={2}>
                 <UploadDropzone
+                    customers={customers}
                     setCustomers={setCustomers}
                     setCustomersLoading={setCustomersLoading}
                     parseCustomerData={parseCustomerData}

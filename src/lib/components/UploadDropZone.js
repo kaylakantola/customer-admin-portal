@@ -31,19 +31,20 @@ const rejectStyle = {
     color: '#ff1744'
 };
 
-export default function UploadDropzone({setCustomers, setCustomersLoading, parseCustomerData}) {
+export default function UploadDropzone({customers, setCustomers, setCustomersLoading, parseCustomerData}) {
 
     const [message, setMessage] = useState("Click here, or, drag and drop your happy camper list to start upload (.txt format only) ")
 
 
     const onDrop = useCallback((acceptedFiles) => {
+        const newCustomers = []
+
         acceptedFiles.forEach((file) => {
             const reader = new FileReader()
 
             reader.onloadstart = () => {
                 setMessage("Upload Started")
                 setCustomersLoading(true)
-                setCustomers([])
             }
 
             reader.onabort = () => {
@@ -57,18 +58,20 @@ export default function UploadDropzone({setCustomers, setCustomersLoading, parse
             reader.onload = () => {
                 const data = reader.result
                 const parsedData = parseCustomerData({data})
+                newCustomers.push(...parsedData)
                 setMessage("Upload Success!")
-                setCustomers(parsedData)
             }
 
             reader.onloadend = () => {
+                const updatedData = customers.concat(newCustomers)
+                setCustomers(updatedData)
                 setCustomersLoading(false)
             }
 
             reader.readAsText(file)
         })
 
-    }, [setCustomers, setCustomersLoading, parseCustomerData])
+    }, [setCustomers, setCustomersLoading, parseCustomerData, customers])
 
 
     const {
