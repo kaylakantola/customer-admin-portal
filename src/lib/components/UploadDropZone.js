@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from 'react'
+import React, {useCallback, useEffect, useMemo, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -31,27 +31,37 @@ const rejectStyle = {
     color: '#ff1744'
 };
 
-export default function UploadDropzone({customers, setCustomers, setCustomersLoading, parseCustomerData}) {
+export default function UploadDropzone({
+                                           customers,
+                                           setCustomers,
+                                           setCustomersLoading,
+                                           parseCustomerData,
+                                           acceptedCustomerFiles,
+                                           setAcceptedCustomerFiles,
+                                           rejectedCustomerFiles,
+                                           setRejectedCustomerFiles
+                                       }) {
+    const defaultMessage = "Click here, or, drag and drop your happy camper list to start upload (.txt format only) "
+    const [message, setMessage] = useState(defaultMessage)
 
-    const [message, setMessage] = useState("Click here, or, drag and drop your happy camper list to start upload (.txt format only) ")
 
-
-    const onDrop = useCallback((acceptedFiles) => {
+    const onDrop = useCallback((files) => {
         const newCustomers = []
 
-        acceptedFiles.forEach((file) => {
+        files.forEach((file) => {
             const reader = new FileReader()
 
             reader.onloadstart = () => {
-                setMessage("Upload Started")
                 setCustomersLoading(true)
             }
 
-            reader.onabort = () => {
+            reader.onabort = (e) => {
+                console.log('onabort', {e})
                 setMessage("Upload Aborted")
             }
 
-            reader.onerror = () => {
+            reader.onerror = (e) => {
+                console.log('onerror', {e})
                 setMessage("Upload Failed")
             }
 
@@ -59,7 +69,7 @@ export default function UploadDropzone({customers, setCustomers, setCustomersLoa
                 const data = reader.result
                 const parsedData = parseCustomerData({data})
                 newCustomers.push(...parsedData)
-                setMessage("Upload Success!")
+                setMessage(defaultMessage)
             }
 
             reader.onloadend = () => {
@@ -75,12 +85,24 @@ export default function UploadDropzone({customers, setCustomers, setCustomersLoa
 
 
     const {
+        acceptedFiles,
+        fileRejections,
         getRootProps,
         getInputProps,
         isDragActive,
         isDragAccept,
         isDragReject
-    } = useDropzone({onDrop, accept: 'text/plain'})
+    } = useDropzone({onDrop, accept: 'text/plain', maxSize: 5000000})
+
+    useEffect(() => {
+        const allAcceptedFiles = acceptedCustomerFiles.concat(acceptedFiles)
+        setAcceptedCustomerFiles(allAcceptedFiles)
+        const allRejectedFiles = rejectedCustomerFiles.concat(fileRejections)
+        setRejectedCustomerFiles(allRejectedFiles)
+    }, [
+        acceptedFiles,
+        fileRejections,
+    ])
 
     const style = useMemo(() => ({
         ...baseStyle,

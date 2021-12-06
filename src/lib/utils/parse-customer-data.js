@@ -7,8 +7,7 @@ export default function parseCustomerData({data}) {
 
     const keys = ["firstName", "lastName", "email", "vehicleType", "vehicleName", "vehicleLength"]
 
-
-    const rows = customerData.map((line) => {
+    const dataRows = customerData.map((line) => {
             if (line.length !== keys.length) {
                 console.log("BAD DATA!!!", {line})
                 return null
@@ -20,11 +19,10 @@ export default function parseCustomerData({data}) {
                 vehicleType: line[3],
                 vehicleName: line[4],
                 vehicleLength: line[5]
-
             })
         }
     )
 
-    const filteredRows = rows.filter(row => row !== null)
-    return filteredRows
+    const rows = dataRows.filter(row => row !== null)
+    return rows
 }
