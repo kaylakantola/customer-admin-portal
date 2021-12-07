@@ -1,5 +1,5 @@
-import { CustomerAdminPortal } from 'customer-admin-portal-kaylakantola';
-//import {CustomerAdminPortal} from './lib';
+//import { CustomerAdminPortal } from 'customer-admin-portal-kaylakantola';
+import {CustomerAdminPortal} from './lib';
 import TopAppBar from './TopAppBar'
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 
@@ -15,9 +15,9 @@ function App() {
     return (
         <ThemeProvider theme={mainTheme}>
             <div>
-                <TopAppBar name={"KaylaCorp"}/>
+                <TopAppBar name={"Outdoor.sy"}/>
                 <div style={{height: 20}}/>
-                <CustomerAdminPortal companyName={"KaylaCorp"}/>
+                <CustomerAdminPortal companyName={"Outdoor.sy"}/>
             </div>
         </ThemeProvider>
     );

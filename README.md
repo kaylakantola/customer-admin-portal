@@ -53,6 +53,8 @@ This will render the following UI:
 
 ### Advanced Example 
 
+You can configure the name of the company by passing in a `companyName` prop.
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -65,6 +67,10 @@ ReactDOM.render(
     document.getElementById('root')
 );
 ```
+
+This will render the following UI:
+
+![kaylacorp](./docs/kaylacorp.png)
 
 ## Future enhancements 
 
