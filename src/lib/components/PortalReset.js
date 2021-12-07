@@ -1,24 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Button from "@mui/material/Button";
 
 
+const defaultResetFn = () => console.log("Pass in a reset function here")
 
 export default function PortalReset({
-                                         customers,
-                                         resetPortal
+                                        resetButtonDisabled=true,
+                                        resetPortal=defaultResetFn
                                      }) {
-
-    const [showReset, setShowReset] = useState(false)
-
-    useEffect(() => {
-        const show = customers.length > 0
-        setShowReset(show)
-    }, [customers])
 
     return (
         <Box sx={{width: '100%'}}>
-            <Button variant="text" onClick={resetPortal} disabled={!showReset}>Reset</Button>
+            <Button variant="text" onClick={resetPortal} disabled={resetButtonDisabled}>Reset</Button>
         </Box>
     )
 }

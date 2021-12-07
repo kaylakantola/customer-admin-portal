@@ -31,9 +31,9 @@ function CustomLoadingOverlay() {
 
 
 
-export default function CustomerGrid({customers, customersLoading}) {
+export default function CustomerGrid({customers=[], customersLoading=false}) {
     return (
-            <div style={{display: 'flex', height: '100%'}}>
+            <div style={{display: 'flex', height: '100%', width: "100%"}}>
                 <div style={{flexGrow: 1}}>
                     <DataGrid
                         rows={customers}
