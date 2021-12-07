@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import {styled} from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import CustomerGrid from "./CustomerGrid";
-import CustomerFiles from './CustomerFiles'
+import Divider from '@mui/material/Divider'
+import PortalHeader from './PortalHeader'
+import PortalReset from './PortalReset'
 import UploadDropzone from "./UploadDropZone";
+import CustomerGrid from "./CustomerGrid";
 import parseCustomerData from '../utils/parse-customer-data'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {Stack} from "@mui/material";
 
-const Item = styled(Paper)(({ theme }) => ({
+const Item = styled('div')(({theme}) => ({
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.primary
 }));
 
 const mainTheme = createTheme({
@@ -23,56 +24,51 @@ const mainTheme = createTheme({
         },
     },
 });
-const CustomerAdminPortal = () => {
+
+const PortalLayout = styled(Paper)(({theme}) => ({
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.primary,
+    flexGrow: 1
+}));
+const CustomerAdminPortal = ({companyName = "Outdoor.sy"}) => {
     const [customers, setCustomers] = useState([])
     const [customersLoading, setCustomersLoading] = useState(false)
-    const [acceptedCustomerFiles, setAcceptedCustomerFiles] = useState([])
-    const [rejectedCustomerFiles, setRejectedCustomerFiles] = useState([])
 
     const resetPortal = () => {
         setCustomers([])
         setCustomersLoading(false)
-        setAcceptedCustomerFiles([])
-        setRejectedCustomerFiles([])
     }
+
     return (
         <ThemeProvider theme={mainTheme}>
-        <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={4}>
-                <Grid item xs={12}>
+            <PortalLayout>
+                <Stack spacing={1}>
+                    <Item>
+                        <PortalHeader companyName={companyName}/>
+                    </Item>
+                    <Divider />
+                    <Item>
+                        <PortalReset resetPortal={resetPortal} customers={customers}/>
+                    </Item>
                     <Item>
                         <UploadDropzone
                             customers={customers}
                             setCustomers={setCustomers}
                             setCustomersLoading={setCustomersLoading}
                             parseCustomerData={parseCustomerData}
-                            acceptedCustomerFiles={acceptedCustomerFiles}
-                            setAcceptedCustomerFiles={setAcceptedCustomerFiles}
-                            rejectedCustomerFiles={rejectedCustomerFiles}
-                            setRejectedCustomerFiles={setRejectedCustomerFiles}
                         />
                     </Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>
-                        <CustomerFiles
-                            acceptedCustomerFiles={acceptedCustomerFiles}
-                            rejectedCustomerFiles={rejectedCustomerFiles}
-                            resetPortal={resetPortal}
-                        />
-                    </Item>
-                </Grid>
-                <Grid item xs={8}>
                     <Item>
                         <CustomerGrid
                             customers={customers}
                             customersLoading={customersLoading}
                         />
                     </Item>
-                </Grid>
+                </Stack>
 
-            </Grid>
-        </Box>
+            </PortalLayout>
         </ThemeProvider>
     )
 }

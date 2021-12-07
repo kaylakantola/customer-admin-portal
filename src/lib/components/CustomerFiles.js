@@ -27,7 +27,7 @@ export default function CustomerFiles({
     return (
         <Box sx={{width: '100%', bgcolor: 'background.paper'}}>
             <Typography variant="h5" component="div">
-                Files
+                Uploads
             </Typography>
             {showReset &&
                 (<List>

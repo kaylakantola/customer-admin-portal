@@ -36,12 +36,8 @@ export default function UploadDropzone({
                                            setCustomers,
                                            setCustomersLoading,
                                            parseCustomerData,
-                                           acceptedCustomerFiles,
-                                           setAcceptedCustomerFiles,
-                                           rejectedCustomerFiles,
-                                           setRejectedCustomerFiles
                                        }) {
-    const defaultMessage = "Click here, or, drag and drop your happy camper list to start upload (.txt format only) "
+    const defaultMessage = "Drag and drop a file to upload some happy campers!"
     const [message, setMessage] = useState(defaultMessage)
 
 
@@ -95,15 +91,12 @@ export default function UploadDropzone({
     } = useDropzone({onDrop, accept: 'text/plain', maxSize: 5000000})
 
     useEffect(() => {
-        const allAcceptedFiles = acceptedCustomerFiles.concat(acceptedFiles)
-        setAcceptedCustomerFiles(allAcceptedFiles)
-        const allRejectedFiles = rejectedCustomerFiles.concat(fileRejections)
-        setRejectedCustomerFiles(allRejectedFiles)
-    }, [
-        acceptedFiles,
-        fileRejections,
-    ])
-
+        console.log({
+            acceptedFiles,
+            fileRejections,
+        })
+    }, [acceptedFiles,
+        fileRejections,])
     const style = useMemo(() => ({
         ...baseStyle,
         ...(isDragActive ? activeStyle : {}),
