@@ -1,4 +1,4 @@
-# customer-admin-portal
+~~# customer-admin-portal
 
 ## Intended Audience
 
@@ -41,17 +41,17 @@ ReactDOM.render(
 );
 ```
 
-This will render the following UI: 
+This will render the following UI:
 
 ![empty dashboard](./docs/example_dashboard_empty.png)
 
-### Props 
+### Props
 
 | Name | Type | Description                             | Required | Default       |
 | --- |------|-----------------------------------------|----------|---------------|
 | `companyName` | `string`  | Name of the company using the dashboard | No        | `"Outdoor.sy"` |
 
-### Advanced Example 
+### Advanced Example
 
 You can configure the name of the company by passing in a `companyName` prop.
 
@@ -62,7 +62,7 @@ import {CustomerAdminPortal} from 'customer-admin-portal-kaylakantola';
 
 ReactDOM.render(
     <React>
-        <CustomerAdminPortal companyName={"KaylaCorp"} />
+        <CustomerAdminPortal companyName={"KaylaCorp"}/>
     </React>,
     document.getElementById('root')
 );
@@ -72,7 +72,22 @@ This will render the following UI:
 
 ![kaylacorp](./docs/kaylacorp.png)
 
-## Future enhancements 
+### Data File Upload Requirements
+
+Files must be of type `text/plain` and under `1mb`.
+
+Files must be `comma` or `pipe` delimited data.
+
+The columns must match these headers:
+
+| "firstName" | "lastName" | "email" | "vehicleType" | "vehicleName" | "vehicleLength" |
+| --- |--- |--- |--- |--- |-----------------|
+| "Kayla" | "Kantola" | "krkantola@gmail.com" | "skateboard" | "ol' faithful" | "2 ft"            |
+
+To see example acceptable files, check out [commas.txt](./commas.txt) or [pipes.txt](pipes.txt).
+
+
+## Future enhancements
 
 Allow for further configuration via passed-in props, such as:
 
@@ -81,8 +96,7 @@ Allow for further configuration via passed-in props, such as:
 3. Column headers (Currently, it will only accept files adhering to a specific set of headers)
 4. Schema validation (Currently, no schema validation)
 
-
 ## Changelog
 
-See the [changelog here](./docs/changelog.md).
+See the [changelog here](./docs/changelog.md).~~
 

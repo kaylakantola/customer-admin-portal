@@ -2,14 +2,7 @@ import React from 'react'
 import { GridOverlay, DataGrid } from '@mui/x-data-grid';
 import LinearProgress from '@mui/material/LinearProgress';
 
-// const rows = [
-//     {id: 1, fullName: 'Greta Thunberg', email: 'gretat@future.com', vehicleType: 'sailboat', vehicleName: 'Fridays For Future', vehicleLength: 32},
-//     {id: 2, fullName: 'Greta Zhunberg', email: 'gretaz@future.com', vehicleType: 'yacht', vehicleName: 'Fridays For Future', vehicleLength: 52},
-//     {id: 3, fullName: 'Greta Ahunberg', email: 'gretaa@future.com', vehicleType: 'catamaran', vehicleName: 'Fridays For Future', vehicleLength: 10},
-//     {id: 4, fullName: 'Greta Bhunberg', email: 'gretab@future.com', vehicleType: 'sunfish', vehicleName: 'Fridays For Future', vehicleLength: 5},
-//
-// ];
-
+// defines the grid columns
 const columns = [
     {field: 'fullName', headerName: 'Full Name', flex: 1},
     {field: 'email', headerName: 'Email', flex: 1},
@@ -18,7 +11,7 @@ const columns = [
     {field: 'vehicleLength', headerName: 'Vehicle Length (feet)', flex: .5},
 ];
 
-
+// UI to indicate loading
 function CustomLoadingOverlay() {
     return (
         <GridOverlay>
@@ -30,6 +23,9 @@ function CustomLoadingOverlay() {
 }
 
 
+// Renders the CustomerGrid section of the portal.
+// customers - array, optional, defaults to [], represents "customers" state of parent component
+// customersLoading - boolean, optional, defaults to false,  represents "customersLoading" state of parent component
 
 export default function CustomerGrid({customers=[], customersLoading=false}) {
     return (

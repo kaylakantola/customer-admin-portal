@@ -1,53 +1,31 @@
 import React, {useEffect, useState} from 'react';
-import {styled} from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
+import {Stack} from "@mui/material";
 import Divider from '@mui/material/Divider'
+import {ThemeProvider} from '@mui/material/styles';
+import {Item, PortalLayout, mainTheme} from './styles'
 import PortalHeader from './PortalHeader'
 import PortalReset from './PortalReset'
 import UploadDropzone from "./UploadDropZone";
 import CustomerGrid from "./CustomerGrid";
 import parseCustomerData from '../utils/parse-customer-data'
-import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {Stack} from "@mui/material";
-
-const Item = styled('div')(({theme}) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.primary
-}));
-
-const mainTheme = createTheme({
-    palette: {
-        primary: {
-            main: "#005825",
-        },
-    },
-});
-
-const PortalLayout = styled(Paper)(({theme}) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.primary,
-    flexGrow: 1
-}));
 
 const CustomerAdminPortal = ({companyName = "Outdoor.sy"}) => {
+    // set initial state
     const [customers, setCustomers] = useState([])
     const [customersLoading, setCustomersLoading] = useState(false)
-
     const [resetButtonDisabled, setResetButtonDisabled] = useState(true)
 
+    // when there are customers loaded, enable the "reset" button
     useEffect(() => {
         const disabled = customers.length < 1
         setResetButtonDisabled(disabled)
     }, [customers])
 
-
+    // a function to reset component to initial state
     const resetPortal = () => {
         setCustomers([])
         setCustomersLoading(false)
+        setResetButtonDisabled(true)
     }
 
     return (
@@ -57,7 +35,7 @@ const CustomerAdminPortal = ({companyName = "Outdoor.sy"}) => {
                     <Item>
                         <PortalHeader companyName={companyName}/>
                     </Item>
-                    <Divider />
+                    <Divider/>
                     <Item>
                         <PortalReset resetPortal={resetPortal} resetButtonDisabled={resetButtonDisabled}/>
                     </Item>
@@ -76,7 +54,6 @@ const CustomerAdminPortal = ({companyName = "Outdoor.sy"}) => {
                         />
                     </Item>
                 </Stack>
-
             </PortalLayout>
         </ThemeProvider>
     )

@@ -43,6 +43,15 @@ All other components in that folder are smaller pieces that are composed togethe
 
 The `utils` folder contains functions that do not involve ui components. These
 
+## Tools 
+
+1. [Material UI](https://mui.com/getting-started/usage/) for UI components
+2. [React Dropzone](https://react-dropzone.js.org/) for file upload 
+3. [csv-string](https://www.npmjs.com/package/csv-string) for parsing the input file
+4. [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
+
+### React Testing Library 
+
 ## Tests 
 
 Each component and utility function should have a corresponding test in the parent folder's `__tests__` folder.

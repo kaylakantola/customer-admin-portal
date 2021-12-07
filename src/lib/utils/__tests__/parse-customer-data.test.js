@@ -1,12 +1,9 @@
-import React from 'react'
-import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import parseCustomerData from '../parse-customer-data'
 
 test('parseCustomerData - no data', async () => {
     const data = ""
     const parsedData = parseCustomerData({data})
-    console.log({parsedData})
     expect(parsedData).toEqual([])
 })
 
