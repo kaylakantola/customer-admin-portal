@@ -7,6 +7,7 @@ import CustomerGrid from "./CustomerGrid";
 import CustomerFiles from './CustomerFiles'
 import UploadDropzone from "./UploadDropZone";
 import parseCustomerData from '../utils/parse-customer-data'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -15,6 +16,13 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
+const mainTheme = createTheme({
+    palette: {
+        primary: {
+            main: "#005825",
+        },
+    },
+});
 const CustomerAdminPortal = () => {
     const [customers, setCustomers] = useState([])
     const [customersLoading, setCustomersLoading] = useState(false)
@@ -28,6 +36,7 @@ const CustomerAdminPortal = () => {
         setRejectedCustomerFiles([])
     }
     return (
+        <ThemeProvider theme={mainTheme}>
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
@@ -64,6 +73,7 @@ const CustomerAdminPortal = () => {
 
             </Grid>
         </Box>
+        </ThemeProvider>
     )
 }
 
