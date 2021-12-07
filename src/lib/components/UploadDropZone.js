@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react'
+import React, {useCallback, useMemo, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -82,8 +82,6 @@ export default function UploadDropzone({
 
 
     const {
-        acceptedFiles,
-        fileRejections,
         getRootProps,
         getInputProps,
         isDragActive,
@@ -91,9 +89,6 @@ export default function UploadDropzone({
         isDragReject
     } = useDropzone({onDrop, accept: 'text/plain', maxSize: 1000000}) // 1000000 bytes = 1 megabyte
 
-    // useEffect(() => {
-    //     console.log({ acceptedFiles, fileRejections })
-    // }, [acceptedFiles, fileRejections])
 
     const style = useMemo(() => ({
         ...baseStyle,

@@ -1,7 +1,7 @@
 {
   "name": "customer-admin-portal-kaylakantola",
   "version": "0.0.1",
-  "description": "An example react component for managing customer data",
+  "description": "An example React component for managing customer data",
   "author": "Kayla Kantola",
   "keywords": [
     "react",
