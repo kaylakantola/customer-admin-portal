@@ -1,4 +1,4 @@
-~~# customer-admin-portal
+# customer-admin-portal
 
 ## Intended Audience
 
@@ -98,5 +98,5 @@ Allow for further configuration via passed-in props, such as:
 
 ## Changelog
 
-See the [changelog here](./docs/changelog.md).~~
+See the [changelog here](./docs/changelog.md).
 
