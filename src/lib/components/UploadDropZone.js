@@ -88,15 +88,12 @@ export default function UploadDropzone({
         isDragActive,
         isDragAccept,
         isDragReject
-    } = useDropzone({onDrop, accept: 'text/plain', maxSize: 5000000})
+    } = useDropzone({onDrop, accept: 'text/plain', maxSize: 1000000}) // 1000000 bytes = 1 megabyte
 
     useEffect(() => {
-        console.log({
-            acceptedFiles,
-            fileRejections,
-        })
-    }, [acceptedFiles,
-        fileRejections,])
+        console.log({ acceptedFiles, fileRejections })
+    }, [acceptedFiles, fileRejections])
+
     const style = useMemo(() => ({
         ...baseStyle,
         ...(isDragActive ? activeStyle : {}),

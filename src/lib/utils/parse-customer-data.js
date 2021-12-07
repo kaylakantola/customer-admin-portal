@@ -3,8 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default function parseCustomerData({data}) {
     const customerData = CSV.parse(data);
-    console.log('parseCustomerData', {customerData})
-
     const keys = ["firstName", "lastName", "email", "vehicleType", "vehicleName", "vehicleLength"]
 
     const dataRows = customerData.map((line) => {
@@ -18,7 +16,7 @@ export default function parseCustomerData({data}) {
                 email: line[2],
                 vehicleType: line[3],
                 vehicleName: line[4],
-                vehicleLength: line[5]
+                vehicleLength: parseInt(line[5])
             })
         }
     )

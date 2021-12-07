@@ -32,6 +32,7 @@ const PortalLayout = styled(Paper)(({theme}) => ({
     color: theme.palette.text.primary,
     flexGrow: 1
 }));
+
 const CustomerAdminPortal = ({companyName = "Outdoor.sy"}) => {
     const [customers, setCustomers] = useState([])
     const [customersLoading, setCustomersLoading] = useState(false)
