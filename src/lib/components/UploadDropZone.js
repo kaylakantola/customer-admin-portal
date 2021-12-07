@@ -31,8 +31,9 @@ const rejectStyle = {
     color: '#ff1744'
 };
 
+
 export default function UploadDropzone({
-                                           customers,
+                                           customers=[],
                                            setCustomers,
                                            setCustomersLoading,
                                            parseCustomerData,
@@ -90,9 +91,9 @@ export default function UploadDropzone({
         isDragReject
     } = useDropzone({onDrop, accept: 'text/plain', maxSize: 1000000}) // 1000000 bytes = 1 megabyte
 
-    useEffect(() => {
-        console.log({ acceptedFiles, fileRejections })
-    }, [acceptedFiles, fileRejections])
+    // useEffect(() => {
+    //     console.log({ acceptedFiles, fileRejections })
+    // }, [acceptedFiles, fileRejections])
 
     const style = useMemo(() => ({
         ...baseStyle,

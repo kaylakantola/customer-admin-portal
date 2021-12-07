@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {styled} from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider'
@@ -37,6 +37,14 @@ const CustomerAdminPortal = ({companyName = "Outdoor.sy"}) => {
     const [customers, setCustomers] = useState([])
     const [customersLoading, setCustomersLoading] = useState(false)
 
+    const [resetButtonDisabled, setResetButtonDisabled] = useState(true)
+
+    useEffect(() => {
+        const disabled = customers.length < 1
+        setResetButtonDisabled(disabled)
+    }, [customers])
+
+
     const resetPortal = () => {
         setCustomers([])
         setCustomersLoading(false)
@@ -51,7 +59,7 @@ const CustomerAdminPortal = ({companyName = "Outdoor.sy"}) => {
                     </Item>
                     <Divider />
                     <Item>
-                        <PortalReset resetPortal={resetPortal} customers={customers}/>
+                        <PortalReset resetPortal={resetPortal} resetButtonDisabled={resetButtonDisabled}/>
                     </Item>
                     <Item>
                         <UploadDropzone
