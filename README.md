@@ -1,4 +1,6 @@
-# customer-admin-portal
+# customer-admin-portal-kaylakantola
+
+[npm](https://www.npmjs.com/package/customer-admin-portal-kaylakantola)
 
 ## Really Quick Quickstart
 
