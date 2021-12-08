@@ -52,7 +52,7 @@ Your entry point for making updates will be `customer-admin-portal/src/lib/compo
 
 All other components in that folder are smaller pieces that are composed together to make up the component.
 
-The `utils` folder contains functions that do not involve ui components. These
+The `utils` folder contains functions that do not involve ui components. 
 
 ## Tools 
 
@@ -61,7 +61,6 @@ The `utils` folder contains functions that do not involve ui components. These
 3. [csv-string](https://www.npmjs.com/package/csv-string) for parsing the input file
 4. [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for testing
 
-### React Testing Library 
 
 ## Tests 
 
