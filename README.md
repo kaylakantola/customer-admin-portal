@@ -24,6 +24,8 @@ npm i customer-admin-portal-kaylakantola
 
 ## Usage
 
+> Your react app MUST be using `"react": "^17.0.2"` & `"react-dom": "^17.0.2"`
+
 ### Minimal example
 
 Simply import the component and render it inside a React application.
@@ -89,12 +91,13 @@ To see example acceptable files, check out [commas.txt](./commas.txt) or [pipes.
 
 ## Future enhancements
 
-Allow for further configuration via passed-in props, such as:
-
-1. Max file size (Currently, it will only accept files smaller than 1mb)
-2. Accepted file type(s) (Currently, it will only accept text files)
-3. Column headers (Currently, it will only accept files adhering to a specific set of headers)
-4. Schema validation (Currently, no schema validation)
+1. Allow for further configuration via passed-in props, such as:
+   1. Max file size (Currently, it will only accept files smaller than 1mb)
+   2. Accepted file type(s) (Currently, it will only accept text files)
+   3. Column headers (Currently, it will only accept files adhering to a specific set of headers)
+   4. Schema validation (Currently, no schema validation)
+2. Optimize export to reduce overall package size & dependencies
+3. Add support for earlier versions of react and node
 
 ## Changelog
 
