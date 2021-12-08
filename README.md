@@ -1,8 +1,19 @@
 # customer-admin-portal
 
+## Really Quick Quickstart
+
+```bash
+git clone https://github.com/kaylakantola/customer-admin-portal.git
+cd customer-admin-portal
+npm i
+npm run start
+```
+
+Visit `localhost:3000` in your browser to see the component rendered.
+
 ## Intended Audience
 
-This documentation is intended for use by developers who want to incorporate the standalone`customer-admin-portal`
+The following documentation is intended for use by developers who want to incorporate the standalone`customer-admin-portal-kaylakantola`
 component into their React project.
 
 If you're looking for developer documentation for the component itself, go [here](./docs/developer.md).

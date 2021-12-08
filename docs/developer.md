@@ -17,6 +17,7 @@ cd customer-admin-portal
 npm i
 npm run start
 ```
+
 Visit `localhost:3000` in your browser to see the component rendered. 
 
 ## Getting Started
