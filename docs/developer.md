@@ -9,6 +9,16 @@ This documentation is intended for developers who want to work on the `customer-
 1. Familiarity with javascript, react, node
 2. Latest LTS version of node installed on your computer ([here's how you do that](https://heynode.com/tutorial/install-nodejs-locally-nvm/))
 
+## Quickstart
+
+```bash
+git clone https://github.com/kaylakantola/customer-admin-portal.git
+cd customer-admin-portal
+npm i
+npm run start
+```
+Visit `localhost:3000` in your browser to see the component rendered. 
+
 ## Getting Started
 
 Clone the repository, cd into the directory, and install the dependencies.
