@@ -99,7 +99,7 @@ The columns must match these headers:
 | --- |--- |--- |--- |--- |-----------------|
 | "Kayla" | "Kantola" | "krkantola@gmail.com" | "skateboard" | "ol' faithful" | "2 ft"            |
 
-To see example acceptable files, check out [commas.txt](./commas.txt) or [pipes.txt](pipes.txt).
+To see example acceptable files, check out [commas.txt](./docs/commas.txt) or [pipes.txt](./docs/pipes.txt).
 
 
 ## Future enhancements
