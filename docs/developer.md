@@ -2,7 +2,7 @@
 
 ## Intended Audience
 
-This documentation is intended for developers who want to work on the `customer-admin-portal` component, or just understand how it works under the hood.
+This documentation is intended for developers who want to work on the `customer-admin-portal-kaylakantola` component, or just understand how it works under the hood.
 
 ## Prerequisites 
 
